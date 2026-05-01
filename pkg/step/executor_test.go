@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/mike/yaml-testing/pkg/variable"
+	"github.com/zend/yamlit/pkg/variable"
 )
 
 func TestExecuteGET(t *testing.T) {

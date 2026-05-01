@@ -1,4 +1,4 @@
-module github.com/mike/yaml-testing
+module github.com/zend/yamlit
 
 go 1.25.0
 

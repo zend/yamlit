@@ -8,7 +8,7 @@ import (
 
 	"github.com/tidwall/gjson"
 
-	"github.com/mike/yaml-testing/pkg/step"
+	"github.com/zend/yamlit/pkg/step"
 )
 
 // Run executes all assertions against the HTTP response and returns results.

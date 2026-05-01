@@ -1,5 +1,6 @@
 <p align="center">
-  <h1 align="center">HTTP Tester</h1>
+  <h1 align="center">yamlit</h1>
+  <p align="center"><strong>YAML Integration Testing Toolkit</strong></p>
   <p align="center">轻量级 YAML 驱动的 HTTP API 测试工具</p>
   <p align="center">
     <img src="https://img.shields.io/badge/Go-1.26+-00ADD8?logo=go" alt="Go version">
@@ -10,7 +11,7 @@
 
 ---
 
-**HTTP Tester** 是一个用 Go 实现的单二进制 HTTP API 测试工具。你只需写一个 YAML 文件定义请求步骤、断言和变量，执行器就会自动运行并输出清晰的测试报告。
+**yamlit** 是一个用 Go 实现的单二进制 HTTP API 测试工具。你只需写一个 YAML 文件定义请求步骤、断言和变量，执行器就会自动运行并输出清晰的测试报告。
 
 适合：**个人开发者**、**本地调试**、**CI 集成**。
 
@@ -52,9 +53,9 @@
 ## 🚀 快速开始
 
 ```bash
-# 1. 构建
-git clone <repo> && cd http-tester
-go build -o http_tester ./cmd/http_tester/
+# 1. 安装
+git clone git@github.com:zend/yamlit.git && cd yamlit
+go build -o yamlit ./cmd/yamlit/
 
 # 2. 写一个测试文件
 cat > test.yaml << 'EOF'
@@ -67,7 +68,7 @@ cat > test.yaml << 'EOF'
 EOF
 
 # 3. 运行
-./http_tester test.yaml
+./yamlit test.yaml
 ```
 
 输出示例：
@@ -139,7 +140,7 @@ EOF
 ### 第 2 步：运行
 
 ```bash
-./http_tester -v tutorial.yaml
+./yamlit -v tutorial.yaml
 ```
 
 ### 第 3 步：查看结果
@@ -166,7 +167,7 @@ EOF
 ### 用法
 
 ```bash
-./http_tester [flags] <input>
+./yamlit [flags] <input>
 ```
 
 ### 参数
@@ -188,22 +189,22 @@ EOF
 
 ```bash
 # 基础用法
-./http_tester test.yaml
+./yamlit test.yaml
 
 # 详细输出
-./http_tester -v test.yaml
+./yamlit -v test.yaml
 
 # 输出 JSON 报告
-./http_tester -o report.json test.yaml
+./yamlit -o report.json test.yaml
 
 # 详细输出 + JSON 报告
-./http_tester -v -o report.json test.yaml
+./yamlit -v -o report.json test.yaml
 
 # 批量运行目录
-./http_tester ./tests/
+./yamlit ./tests/
 
 # 通配符
-./http_tester "tests/*.yaml"
+./yamlit "tests/*.yaml"
 ```
 
 ### 返回码
@@ -649,9 +650,9 @@ steps:
 ## 📁 项目结构
 
 ```
-http-tester/
+yamlit/
 ├── cmd/
-│   └── http_tester/
+│   └── yamlit/
 │       └── main.go              # CLI 入口：参数解析、文件发现、执行调度
 ├── pkg/
 │   ├── parser/                  # YAML 解析与校验
@@ -678,11 +679,11 @@ http-tester/
 │       ├── reporter.go
 │       └── reporter_test.go
 ├── testdata/
-│   ├── basic.yaml               # 示例测试文件
+│   └── basic.yaml               # 示例测试文件
 ├── docs/
 │   ├── plans/
-│   │   ├── 2026-05-01-http-tester-design.md
-│   │   └── 2026-05-01-http-tester-implementation-plan.md
+│   │   ├── 2026-05-01-yamlit-design.md
+│   │   └── 2026-05-01-yamlit-implementation-plan.md
 │   └── ai-agent-yaml-guide.md   # AI Agent 编写 YAML 指南
 ├── go.mod
 ├── go.sum
@@ -702,7 +703,7 @@ http-tester/
 
 ```bash
 # 构建
-go build -o http_tester ./cmd/http_tester/
+go build -o yamlit ./cmd/yamlit/
 
 # 运行所有测试
 go test ./... -v
@@ -736,5 +737,5 @@ go clean
 | 文档 | 说明 |
 |---|---|
 | [AI Agent YAML 编写指南](docs/ai-agent-yaml-guide.md) | 面向 AI Agent 的详细 YAML 编写教程，含 10 种常见模式和 2 个完整示例 |
-| [设计文档](docs/plans/2026-05-01-http-tester-design.md) | 项目架构设计决策与组件说明 |
-| [实现计划](docs/plans/2026-05-01-http-tester-implementation-plan.md) | TDD 实现步骤与测试策略 |
+| [设计文档](docs/plans/2026-05-01-yamlit-design.md) | 项目架构设计决策与组件说明 |
+| [实现计划](docs/plans/2026-05-01-yamlit-implementation-plan.md) | TDD 实现步骤与测试策略 |

@@ -7,7 +7,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/mike/yaml-testing/pkg/step"
+	"github.com/zend/yamlit/pkg/step"
 )
 
 // validMethods is the set of supported HTTP methods

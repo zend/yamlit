@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mike/yaml-testing/pkg/variable"
+	"github.com/zend/yamlit/pkg/variable"
 )
 
 // Executor executes a single step's HTTP request

@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/mike/yaml-testing/pkg/step"
+	"github.com/zend/yamlit/pkg/step"
 )
 
 func TestRunSingleStepPass(t *testing.T) {

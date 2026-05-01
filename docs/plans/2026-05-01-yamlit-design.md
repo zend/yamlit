@@ -1,11 +1,11 @@
-# HTTP Tester — Design Document
+# yamlit — Design Document
 
 **Date:** 2026-05-01
 **Status:** Draft -> Validated
 
 ## Overview
 
-HTTP Tester is a lightweight YAML-driven HTTP API testing tool for individual developers. Written in Go, it ships as a single binary. Users write test scenarios as YAML files, where each step is an HTTP request with assertions, variable extraction, retry logic, and shell hooks.
+yamlit is a lightweight YAML-driven HTTP API testing tool for individual developers. Written in Go, it ships as a single binary. Users write test scenarios as YAML files, where each step is an HTTP request with assertions, variable extraction, retry logic, and shell hooks.
 
 ---
 
@@ -58,9 +58,9 @@ Lightweight list-style format. A file is an array of steps.
 ## 2. Go Project Structure
 
 ```
-http-tester/
+yamlit/
 ├── cmd/
-│   └── http_tester/
+│   └── yamlit/
 │       └── main.go              # CLI entry point
 ├── pkg/
 │   ├── parser/                  # YAML parsing & validation
@@ -211,11 +211,11 @@ func runShell(script string, timeout time.Duration) error
 ## 7. CLI Interface
 
 ```
-./http_tester <file.yaml>              # single file
-./http_tester <directory/>             # batch all .yaml/.yml files
-./http_tester <pattern>                # wildcard, e.g. "tests/*.yaml"
-./http_tester <input> -v               # verbose (show request/response bodies)
-./http_tester <input> -o report.json   # optional JSON report file
+./yamlit <file.yaml>              # single file
+./yamlit <directory/>             # batch all .yaml/.yml files
+./yamlit <pattern>                # wildcard, e.g. "tests/*.yaml"
+./yamlit <input> -v               # verbose (show request/response bodies)
+./yamlit <input> -o report.json   # optional JSON report file
 ```
 
 Exit code: 0 (all pass), 1 (any failure).

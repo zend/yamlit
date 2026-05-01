@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mike/yaml-testing/pkg/step"
-	"github.com/mike/yaml-testing/pkg/variable"
+	"github.com/zend/yamlit/pkg/step"
+	"github.com/zend/yamlit/pkg/variable"
 )
 
 func TestExtractFromBody(t *testing.T) {

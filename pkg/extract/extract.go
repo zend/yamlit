@@ -7,8 +7,8 @@ import (
 
 	"github.com/tidwall/gjson"
 
-	"github.com/mike/yaml-testing/pkg/step"
-	"github.com/mike/yaml-testing/pkg/variable"
+	"github.com/zend/yamlit/pkg/step"
+	"github.com/zend/yamlit/pkg/variable"
 )
 
 // Run extracts variables from the HTTP response according to the given items.

@@ -1,6 +1,6 @@
-# AI Agent 指南：如何编写 HTTP Tester YAML 测试文件
+# AI Agent 指南：如何编写 yamlit YAML 测试文件
 
-> 本文档面向 AI Agent（LLM / 编码助手），指导你为用户生成正确、高质量的 HTTP Tester YAML 测试文件。
+> 本文档面向 AI Agent（LLM / 编码助手），指导你为用户生成正确、高质量的 yamlit YAML 测试文件。
 
 ## 目录
 
@@ -17,7 +17,7 @@
 
 ## 1. 格式总览
 
-HTTP Tester 使用 **YAML** 格式。一个文件是一个 **步骤数组**，每个步骤定义一次 HTTP 请求及其验证逻辑。
+yamlit 使用 **YAML** 格式。一个文件是一个 **步骤数组**，每个步骤定义一次 HTTP 请求及其验证逻辑。
 
 ```yaml
 - name: <步骤名>
@@ -649,7 +649,7 @@ asserts:
 
 ```bash
 # 批量运行所有测试
-./http_tester tests/
+./yamlit tests/
 ```
 
 ### 模式 10：验证错误处理

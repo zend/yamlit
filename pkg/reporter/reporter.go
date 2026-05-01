@@ -8,8 +8,8 @@ import (
 
 	"github.com/fatih/color"
 
-	"github.com/mike/yaml-testing/pkg/runner"
-	"github.com/mike/yaml-testing/pkg/step"
+	"github.com/zend/yamlit/pkg/runner"
+	"github.com/zend/yamlit/pkg/step"
 )
 
 // Exported color variables for use by CLI

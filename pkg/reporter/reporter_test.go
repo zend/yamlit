@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mike/yaml-testing/pkg/runner"
-	"github.com/mike/yaml-testing/pkg/step"
+	"github.com/zend/yamlit/pkg/runner"
+	"github.com/zend/yamlit/pkg/step"
 )
 
 func TestFormatDuration(t *testing.T) {

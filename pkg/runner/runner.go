@@ -6,10 +6,10 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/mike/yaml-testing/pkg/assert"
-	"github.com/mike/yaml-testing/pkg/extract"
-	"github.com/mike/yaml-testing/pkg/step"
-	"github.com/mike/yaml-testing/pkg/variable"
+	"github.com/zend/yamlit/pkg/assert"
+	"github.com/zend/yamlit/pkg/extract"
+	"github.com/zend/yamlit/pkg/step"
+	"github.com/zend/yamlit/pkg/variable"
 )
 
 // Runner orchestrates the execution of a sequence of test steps
