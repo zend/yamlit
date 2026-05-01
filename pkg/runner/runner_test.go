@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/zend/yamlit/pkg/step"
+	"github.com/zend/yamlit/pkg/variable"
 )
 
 func TestRunSingleStepPass(t *testing.T) {
@@ -318,6 +319,39 @@ func TestRunBodyEqualsAssert(t *testing.T) {
 
 	if report.Passed != 1 {
 		t.Errorf("Passed = %d, want 1", report.Passed)
+	}
+}
+
+func TestRunWithExternalVars(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprint(w, `{"status":"ok"}`)
+	}))
+	defer server.Close()
+
+	vars := variable.NewPool()
+	vars.LoadDotenv("")
+	vars.Set("TEST_URL", server.URL)
+
+	steps := []step.Step{
+		{
+			Name:   "external-url",
+			Method: "GET",
+			URL:    "${TEST_URL}",
+			Asserts: []step.Assertion{
+				{Type: "status_code", Expect: "200"},
+			},
+		},
+	}
+
+	r := NewRunnerWithVars(steps, false, vars)
+	report := r.Run()
+
+	if report.Failed > 0 {
+		t.Errorf("expected all pass, got %d failures", report.Failed)
+	}
+	if report.Steps[0].Error != nil {
+		t.Errorf("step error: %v", report.Steps[0].Error)
 	}
 }
 

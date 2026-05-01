@@ -29,6 +29,17 @@ type Report struct {
 	Elapsed time.Duration
 }
 
+// NewRunnerWithVars creates a runner that uses an external variable pool.
+// This allows sharing .env and OS env vars across multiple YAML file runs.
+func NewRunnerWithVars(steps []step.Step, verbose bool, vars *variable.Pool) *Runner {
+	return &Runner{
+		steps:    steps,
+		vars:     vars,
+		executor: step.NewExecutor(),
+		verbose:  verbose,
+	}
+}
+
 // NewRunner creates a new runner for the given steps
 func NewRunner(steps []step.Step, verbose bool) *Runner {
 	return &Runner{
