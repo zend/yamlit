@@ -1,0 +1,31 @@
+- name: login
+  method: POST
+  url: https://api.example.com/login
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: '{"user":"test","pass":"123"}'
+  retry_count: 2
+  retry_interval: 1s
+  asserts:
+    - type: status_code
+      expect: 200
+    - type: jsonpath
+      path: $.code
+      expect: "0"
+  extract:
+    - source: body
+      path: $.data.token
+      var_name: auth_token
+
+- name: get_profile
+  method: GET
+  url: https://api.example.com/profile
+  headers:
+    Authorization: "Bearer ${auth_token}"
+  asserts:
+    - type: status_code
+      expect: 200
+    - type: body_match
+      expect: "profile"
