@@ -12,6 +12,7 @@ import (
 	"github.com/zend/yamlit/pkg/parser"
 	"github.com/zend/yamlit/pkg/reporter"
 	"github.com/zend/yamlit/pkg/runner"
+	"github.com/zend/yamlit/pkg/variable"
 )
 
 func main() {
@@ -24,6 +25,11 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Usage: %s [-v] [-o report.json] <file.yaml|directory|pattern>\n", os.Args[0])
 		os.Exit(1)
 	}
+
+	// Initialize shared variable pool with OS env and .env file
+	vars := variable.NewPool()
+	vars.LoadOSEnv()
+	vars.LoadDotenv(".env")
 
 	input := args[0]
 	files := resolveFiles(input)
@@ -49,7 +55,7 @@ func main() {
 			continue
 		}
 
-		r := runner.NewRunner(steps, *verbose)
+		r := runner.NewRunnerWithVars(steps, *verbose, vars)
 		report := r.Run()
 
 		if *verbose || !batchMode {
