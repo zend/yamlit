@@ -1,6 +1,7 @@
 package step
 
 import (
+	"context"
 	"io"
 	"net/http"
 	"strings"
@@ -93,13 +94,14 @@ func (e *Executor) Execute(step Step, vars *variable.Pool) *StepResult {
 		req.Header.Set(k, v)
 	}
 
-	// Set timeout
+	// Set timeout via context (not mutating shared client)
 	timeout := step.Timeout
-	if timeout > 0 {
-		e.client.Timeout = timeout
-	} else {
-		e.client.Timeout = 30 * time.Second
+	if timeout <= 0 {
+		timeout = 30 * time.Second
 	}
+	ctx, cancel := context.WithTimeout(context.Background(), timeout)
+	defer cancel()
+	req = req.WithContext(ctx)
 
 	// Execute
 	start := time.Now()

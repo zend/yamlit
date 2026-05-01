@@ -21,8 +21,6 @@ var (
 var (
 	colorStep   = color.New(color.FgHiWhite)
 	colorURL    = color.New(color.FgCyan)
-	colorDim    = color.New(color.FgHiBlack)
-	colorBold   = color.New(color.Bold)
 	colorYellow = color.New(color.FgYellow)
 )
 

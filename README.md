@@ -30,12 +30,15 @@ go install github.com/mike/yaml-testing/cmd/http_tester@latest
 ## CLI 用法
 
 ```
-./http_tester <file.yaml>          # 执行单个 YAML 文件
-./http_tester <directory/>         # 批量执行目录下所有 .yaml/.yml
-./http_tester "tests/*.yaml"       # 通配符模式
-./http_tester <input> -v           # verbose 模式（输出详细步骤）
-./http_tester <input> -o report.json # 输出 JSON 报告（待实现）
+./http_tester <file.yaml>               # 执行单个 YAML 文件
+./http_tester <directory/>              # 批量执行目录下所有 .yaml/.yml
+./http_tester "tests/*.yaml"            # 通配符模式
+./http_tester -v <file.yaml>            # verbose 模式（输出详细步骤）
+./http_tester -o report.json <file.yaml> # 输出 JSON 报告
+./http_tester -v -o report.json <file.yaml> # 同时使用多个 flag
 ```
+
+> **注意：** flags 必须放在文件路径**前面**，这是 Go flag 标准行为。
 
 返回码：全部通过 → 0，有失败 → 1（方便 CI 集成）。
 
